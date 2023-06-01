@@ -6,7 +6,7 @@ import java.util.List;
 public class Main {
 
   public static void main(String[] args) throws IOException {
-    String path = "C:/Users/luizd/IdeaProjects/SchedulerSO/src/main/java/org/example/dados.txt";
+    String path = "dados.txt";
 
     List<Processo> processos = FileReaderTXT.leitor(path);
     SchedulerFCFS schedulerFCFS = new SchedulerFCFS(processos);

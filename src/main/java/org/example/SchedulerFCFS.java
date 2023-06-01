@@ -15,21 +15,22 @@ public class SchedulerFCFS {
 
     int tempoAtual = 0;
 
+    // Ordena os processos por ordem de chegada
     processos.sort(Comparator.comparing(Processo::getChegada));
 
-    while (!processos.isEmpty()) {
-      Processo processo = processos.get(0);
+    while (!processos.isEmpty()) {  // para todos os processos
+      Processo processo = processos.get(0); // pega o atual e remove a indexação
       processos.remove(0);
 
       int tempoEspera = tempoAtual - processo.getChegada();
-      temposEsperaTotal.add(Math.max(tempoEspera, 0));
+      temposEsperaTotal.add(Math.max(tempoEspera, 0)); // adiciona no tempo de espera total para calculo da média
 
       int tempoTermino = tempoAtual + processo.getDuracao();
 
       int tempoRetorno = tempoTermino - processo.getChegada();
-      temposRetornoTotal.add(Math.max(tempoRetorno, 0));
+      temposRetornoTotal.add(Math.max(tempoRetorno, 0));  // adiciona no tempo de retorno total para calculo da média
 
-      temposRespostaTotal.add(Math.max(tempoEspera, 0));
+      temposRespostaTotal.add(Math.max(tempoEspera, 0)); // adiciona no tempo de espera total para calculo da média
 
       tempoAtual += processo.getDuracao();
     }
